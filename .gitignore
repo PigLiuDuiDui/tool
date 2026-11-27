@@ -1,0 +1,34 @@
+# 依赖与构建
+**/node_modules/
+**/dist/
+**/.turbo/
+**/target/
+**/.idea/
+**/.vscode/
+*.iml
+.DS_Store
+
+# 环境与密钥（禁止提交）
+.env
+.env.local
+.env.*.local
+**/application-local.yml
+**/secrets/
+*.pem
+*.key
+
+# 日志与临时
+*.log
+logs/
+tmp/
+.temp/
+.tmp-smoke/
+uploads/
+__pycache__/
+*.pyc
+backend/uploads/
+miniprogram/dist/
+miniprogram/node_modules/
+
+# 前端本地覆盖
+frontend/apps/web-antd/.env.local

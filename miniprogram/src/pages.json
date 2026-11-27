@@ -1,0 +1,75 @@
+{
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^tool-icon$": "@/components/ToolIcon/ToolIcon.vue",
+      "^upload-zone$": "@/components/UploadZone.vue",
+      "^primary-button$": "@/components/PrimaryButton.vue"
+    }
+  },
+  "pages": [
+    {
+      "path": "pages/home/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "轻工具箱"
+      }
+    },
+    {
+      "path": "pages/tools/index",
+      "style": {
+        "navigationBarTitleText": "全部工具",
+        "navigationBarBackgroundColor": "#F7F8FC"
+      }
+    },
+    {
+      "path": "pages/mine/index",
+      "style": {
+        "navigationBarTitleText": "我的",
+        "navigationBarBackgroundColor": "#F7F8FC",
+        "usingComponents": {
+          "tool-icon": "/components/ToolIcon/ToolIcon"
+        }
+      }
+    },
+    {
+      "path": "pages/tool-detail/index",
+      "style": {
+        "navigationBarTitleText": "工具",
+        "navigationBarBackgroundColor": "#FFFFFF",
+        "usingComponents": {}
+      }
+    }
+  ],
+  "tabBar": {
+    "color": "#8A90A0",
+    "selectedColor": "#536DFE",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "首页",
+        "iconPath": "static/tab-home.png",
+        "selectedIconPath": "static/tab-home-active.png"
+      },
+      {
+        "pagePath": "pages/tools/index",
+        "text": "工具",
+        "iconPath": "static/tab-tools.png",
+        "selectedIconPath": "static/tab-tools-active.png"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "text": "我的",
+        "iconPath": "static/tab-mine.png",
+        "selectedIconPath": "static/tab-mine-active.png"
+      }
+    ]
+  },
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#F7F8FC",
+    "backgroundColor": "#F7F8FC"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "轻工具箱",
+  "appid": "__UNI__LIGHTTOOLBOX",
+  "description": "证件照、图片处理、文档转换与压缩",
+  "versionName": "1.0.0",
+  "versionCode": "100",
+  "transformPx": false,
+  "mp-weixin": {
+    "appid": "",
+    "setting": {
+      "urlCheck": false,
+      "es6": true,
+      "minified": true
+    },
+    "usingComponents": true,
+    "permission": {
+      "scope.userLocation": {
+        "desc": "用于就近服务（可选）"
+      }
+    }
+  },
+  "vueVersion": "3"
+}

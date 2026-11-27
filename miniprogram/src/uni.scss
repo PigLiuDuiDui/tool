@@ -1,0 +1,24 @@
+/* 全局注入到各页 scss（勿再相对路径 import tokens） */
+$bg-page: #f7f8fc;
+$text-primary: #1f2330;
+$text-secondary: #8a90a0;
+$primary-from: #536dfe;
+$primary-to: #7867f8;
+$tone-purple: #7c6cf0;
+$tone-blue: #4c7dff;
+$tone-teal: #2cb8a2;
+$tone-orange: #f08a3c;
+$card-radius: 20rpx;
+$card-shadow: none;
+
+@mixin card {
+  background: #fff;
+  border-radius: $card-radius;
+}
+
+@mixin primary-btn {
+  background: $primary-from;
+  color: #fff;
+  border-radius: 12rpx;
+  font-weight: 600;
+}

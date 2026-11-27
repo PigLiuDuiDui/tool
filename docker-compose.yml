@@ -1,0 +1,65 @@
+# 轻工具箱本地依赖：PostgreSQL + Redis + Workers
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: toolbox-postgres
+    environment:
+      POSTGRES_DB: light_toolbox
+      POSTGRES_USER: toolbox
+      POSTGRES_PASSWORD: toolbox123
+    ports:
+      - "5433:5432"
+    volumes:
+      - toolbox_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U toolbox -d light_toolbox"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    container_name: toolbox-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - toolbox_redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  photo-worker:
+    build: ./photo-worker
+    container_name: toolbox-photo-worker
+    ports:
+      - "8091:8091"
+    volumes:
+      - ./uploads:/data/uploads
+    environment:
+      UPLOAD_DIR: /data/uploads
+
+  doc-worker:
+    build: ./doc-worker
+    container_name: toolbox-doc-worker
+    ports:
+      - "8092:8092"
+    volumes:
+      - ./uploads:/data/uploads
+    environment:
+      UPLOAD_DIR: /data/uploads
+      GOTENBERG_URL: http://gotenberg:3000
+    depends_on:
+      - gotenberg
+
+  # Office 转 PDF。镜像自带 LibreOffice 和中文字体，用法与 Stirling-PDF 相同。
+  gotenberg:
+    image: gotenberg/gotenberg:8-libreoffice
+    container_name: toolbox-gotenberg
+    ports:
+      - "127.0.0.1:3000:3000"
+
+volumes:
+  toolbox_pg_data:
+  toolbox_redis_data:
